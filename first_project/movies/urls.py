@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import GetMovies, GetMovie, CreateMovie, CreateMovieEasy
+from .views import GetMovies, GetMovie, CreateMovie, CreateMovieEasy, UpdateMovie
 
 urlpatterns = [
     #path('movies/', GetMovies)
@@ -7,5 +7,5 @@ urlpatterns = [
     path('<int:id>/', GetMovie),
     #path('create/', CreateMovie.as_view())
     path('create/', CreateMovieEasy.as_view()),
-    path('update/<int:id>/')
+    path('update/<int:id>/', UpdateMovie.as_view())
 ]
