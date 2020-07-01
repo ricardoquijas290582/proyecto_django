@@ -11,5 +11,7 @@
     <p>Sinopsis: </p>
     <p>{{ movie.sinopsis }}</p>
     <p>Duracion: {{ movie.duration }}</p>
+    <a href="/movies/update/{{movie.id}}/"><button>Editar película</button></a>
+    <a href="/movies/delete/{{movie.id}}/"><button>Eliminar película</button></a>
 </body>
 </html>

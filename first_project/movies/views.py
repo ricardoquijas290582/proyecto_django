@@ -97,3 +97,7 @@ class UpdateMovie(views.View):
                 'id': id
             }
             return render(request, template_name, context)
+def DeleteMovie(request, id):
+    movie = Movie.objects.get(pk=id)
+    movie.delete()
+    return redirect('/movies/')
