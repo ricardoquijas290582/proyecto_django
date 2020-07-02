@@ -20,5 +20,5 @@ from movies import urls as movies_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('movies/', include(movies_urls))
+    path('movies/', include(movies_urls, namespace='movies'))
 ]
