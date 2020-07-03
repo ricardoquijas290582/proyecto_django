@@ -7,8 +7,9 @@
 </head>
 <body>
     <ul>
-        <a href="/movies/"><li>Ver películas</li></a>
-        <a href="/movies/create/"><li>Crear película</li></a>
+        <a href="{% url 'movies:list' %}"><li>Ver películas</li></a>
+        <a href="{% url 'movies:create' %}"><li>Crear película</li></a>
+        <a href="{% url 'users:list' %}"><li>Lista de usuarios</li></a>
     </ul>
     {% block content %}
     {% endblock content %}    
