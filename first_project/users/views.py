@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django import views
 from django.contrib.auth.models import User
 from .forms import UserForm, ProfileForm 
@@ -36,11 +36,18 @@ class CreateUser(views.View):
         user_form = UserForm(request.POST)
         profile_form = ProfileForm(request.POST, request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
-            user_form.save(commit=False)
-            user.set_password(user_form.password)
+            user = user_form.save(commit=False)
+            user.set_password(request.POST['password'])
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
             profile.save()
-            
+            return redirect('users:detail', user.id)
+        else:
+            template_name = 'users/form.html'
+            context = {
+                'user_form': user_form,
+                'profile_form': profile_form
+            }    
+            return render(request, template_name, context)
 
